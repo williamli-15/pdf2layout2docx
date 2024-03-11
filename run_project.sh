@@ -24,4 +24,10 @@ python obtain_json.py ./docs
 python processing_json.py ./docs
 
 # Convert PDFs to DOCX
-python convert_main.py ./docs/your_pdf_file.pdf ./docs/your_json_file.json 0 2
+file_name="CA Infrastructure Fin"
+pdf_path="./docs/${file_name}.pdf"
+out_path="./docs/${file_name}.docx"
+json_path="./docs/updated_${file_name}.json"
+start_page=0
+end_page=2
+python convert_main.py "$pdf_path" "$out_path" "$json_path" $start_page $end_page
