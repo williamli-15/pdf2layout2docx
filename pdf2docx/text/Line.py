@@ -45,8 +45,8 @@ class Line(Element):
         # line break
         self.line_break = raw.get('line_break', 1) # don't break line by default
         self.tab_stop = raw.get('tab_stop', 0) # no TAB stop before the line by default
-
-        self.font = raw['spans'][0]['font']
+        if "spans" in raw.keys():
+                self.font = raw['spans'][0]['font']
 
         # remove key 'bbox' since it is calculated from contained spans
         if 'bbox' in raw: raw.pop('bbox') 

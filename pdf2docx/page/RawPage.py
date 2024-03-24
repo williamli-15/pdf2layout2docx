@@ -520,7 +520,7 @@ class RawPage(BasePage, Layout):
                 iou_ration = self.bb_intersection_over_union(sec_bbox, table_bbox)
 
                 ##table在当前section中
-                if (iou_ration > 0.1):
+                if (iou_ration > 0.05):
 
                     blocks=[]
                     shapes=[]
@@ -528,7 +528,7 @@ class RawPage(BasePage, Layout):
                         col_bbox=column.bbox
                         column_iou_ration = self.bb_intersection_over_union(col_bbox, table_bbox)
 
-                        if (column_iou_ration > 0.1):
+                        if (column_iou_ration > 0.05):
                             # column.blocks.assign_to_tables(table_block)
                             # self.sections[section_id]._instances[col_id].blocks.assign_to_tables(table_block)
                             # self.sections[section_id].reset(self.sections[section_id]._instances[col_id])
