@@ -39,7 +39,7 @@ class LayoutConvertFormat:
         # Check for zero union area
         if union_area == 0:
             return False  # Can't divide by zero, return False indicating no overlap
-                
+
         # Calculate IOU
         iou = inter_area / union_area
 
@@ -82,6 +82,10 @@ class LayoutConvertFormat:
             for line in lines:
 
                 role = line.get('role', 'title')
+                if role==None:
+                    role = 'title'
+                    # print('role: {}'.format(role))
+
                 text = line.get('content', '')
                 polygon = line.get('polygon', [])
 
@@ -89,11 +93,15 @@ class LayoutConvertFormat:
                 text_coord = self.bbox_pdf_convert_image(polygon, pdf_width, pdf_height)
 
                 spans = line.get('spans', [])
-                Font = line.get('Font', "TimesNewRomanPSMT")
-                Font_Size = line.get('Font Size', 12.0)
 
+                Font = line.get('Font', "TimesNewRomanPSMT")
+                if Font == None:
+                    # print("Font: {}".format(Font))
+                    Font = "TimesNewRomanPSMT"
+
+                Font_Size = line.get('Font Size', 12.0)
                 if Font_Size==None:
-                #     print("font size: {}".format(Font_Size))
+                    # print("font size: {}".format(Font_Size))
                     Font_Size = 12.0
 
                 info = {}
