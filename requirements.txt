@@ -1,0 +1,4 @@
+pypdf>=3.0
+reportlab
+pillow
+pdf2image
