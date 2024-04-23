@@ -2,6 +2,7 @@
 import os
 import json
 import torch
+os.environ['USE_TORCH'] = '1'
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
 
@@ -44,7 +45,6 @@ def process_pages(json_export):
     return new_json
 
 def main(input_pdf: str) -> dict:
-    os.environ['USE_TORCH'] = '1'
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     docs = DocumentFile.from_pdf(input_pdf)
     print(f"Starting OCR process...")
